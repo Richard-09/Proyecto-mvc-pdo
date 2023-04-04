@@ -30,7 +30,7 @@
       </div>
     </div>
     <col class="card-body">
-    <div class="container mt-2">
+    <div class="container mt-3">
       <!-- Tabla -->
       <table class="table text-center table-sm table-striped table-bordered border-dark" id="tabla-cursos">
         <colgroup>
@@ -207,8 +207,29 @@
       }
     }
 
+   //Evento click eliminar
+   $("#tabla").on("click", ".eliminar", function (){
+      if (confirm("¿Esta seguro de eliminar este registro?")){
+          const idcurso = $(this).attr("data-codigo");
+        
+          const datos ={
+              'operation' :   'eliminarCurso',
+              'idcurso'   :   idcurso
+          };
+
+          $.ajax({
+            url: './controllers/curso.controller.php',
+            type: 'POST',
+            data: datos,
+            success: function (e){
+              listarCursos();
+            }
+        });
+      }
+    });
 
     listarCursos();
+
   });
 </script>
 </body>

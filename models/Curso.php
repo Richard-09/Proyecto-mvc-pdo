@@ -51,10 +51,10 @@ class Curso extends Conexion{
     }
   }
 
-  public function eliminarCurso($idsuscripcion){
+  public function eliminarCurso($idcurso = 0){
     try{
-      $comando = $this->accesoBD->prepare("CALL spu_suscripcion_eliminar(?)");
-      $comando->execute(array($idsuscripcion));
+      $comando = $this->accesoBD->prepare("CALL spu_curso_eliminar(?)");
+      $comando->execute(array($idcurso));
     }
     catch(Exception $e){
       die($e->getMessage());

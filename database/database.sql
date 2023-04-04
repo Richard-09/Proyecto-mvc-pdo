@@ -58,5 +58,13 @@ CALL spu_cursos_registrar('Python para todos', 'ETI', 'B', '2023-05-10', 120);
 
 CALL spu_cursos_listar;
 
+DELIMITER $$
+CREATE PROCEDURE spu_curso_eliminar(IN _idcurso INT)
+BEGIN	
+  UPDATE cursos
+	SET estado = '0'
+	WHERE idcurso = _idcurso;
+END $$
+
 
 

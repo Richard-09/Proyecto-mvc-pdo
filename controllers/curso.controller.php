@@ -24,7 +24,7 @@ if (isset($_POST['operation'])){
               <td>{$curso['precio']}</td>
               <td>
                   <a href='#' class='btn btn-sm btn-outline-success' title='Editar'><i class='bi bi-pencil'></i></a> -            
-                  <a href='#' class='btn btn-sm btn-outline-danger'title='Eliminar'><i class='bi bi-trash'></i></a>
+                  <a href='#' class='eliminar  btn btn-sm btn-outline-danger'title='Eliminar' data-codigo='{$curso['idcurso']}' ><i class='bi bi-trash'></i></a>
               </td>
           </tr>
           ";
@@ -47,6 +47,11 @@ if (isset($_POST['operation'])){
   
   }
 
+
+
+  if ($_POST['operation'] == 'eliminarCurso'){
+    $curso->eliminarCurso($_POST['idcurso']);
+}
 
 }
 
